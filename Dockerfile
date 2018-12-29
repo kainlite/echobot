@@ -16,6 +16,7 @@ WORKDIR /app
 RUN adduser -D -g 'app' app && \
     chown -R app:app /app
 
+COPY --from=builder --chown=app /app/health_check.sh /app/health_check.sh
 COPY --from=builder --chown=app /app/main /app/main
 
 USER app
