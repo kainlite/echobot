@@ -1,0 +1,28 @@
+apiVersion: gitkube.sh/v1alpha1
+kind: Remote
+metadata:
+  creationTimestamp: null
+  name: minikube
+  namespace: default
+spec:
+  authorizedKeys:
+  - |
+    ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA8jvVVtDSVe25p2U2tDGQyVrnv3YcWjJc6AXTUMc0YNi+QDm6s+hMTwkf2wDRD7b6Y3kmgNSqLEE0EEgOkA69c8PgypM7AwbKZ51V9XcdPd7NyLabpomNiftpUwi01DGfBr25lJV9h2MHwsI/6w1izDvQyN7fAl+aTFgx+VGg1p4FygXWeBqm0n0DfHmBI7PDXxGbuFTJHUmRVS+HPd5Bi31S9Kq6eoodBWtV2MlVnZkpF67FWt2Xo2rFKVf4pZR4N1yjZKRsvIaI5i14LvtOoOqNQ+/tPMAFAif3AhldOW06fgnddYGi/iF+CatVttwNDWmClSOek9LO72UzR4s0xQ== gabriel@kainlite
+  deployments:
+  - containers:
+    - dockerfile: Dockerfile
+      name: echobot
+      path: ./
+    name: echobot
+  manifests:
+    helm: {}
+    path: ./
+  registry:
+    credentials:
+      secretKeyRef:
+        key: ""
+      secretRef: minikube-regsecret
+    url: docker.io/kainlite
+status:
+  remoteUrl: ""
+  remoteUrlDesc: ""
