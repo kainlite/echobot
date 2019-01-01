@@ -16,7 +16,7 @@ spec:
     name: echobot
   manifests:
     helm: {}
-    path: ./
+    path: ""
   registry:
     credentials:
       secretKeyRef:
