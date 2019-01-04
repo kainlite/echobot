@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: echobot
+  name: echobot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: echobot
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        run: echobot
+    spec:
+      containers:
+      - image: kainlite/echobot
+        name: echobot
+        env:
+        - name: SLACK_API_TOKEN
+          value: really_long_token
+        livenessProbe:
+          exec:
+            command:
+            - '/bin/sh'
+            - '-c'
+            - '/app/health_check.sh'
